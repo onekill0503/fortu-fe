@@ -1,23 +1,12 @@
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 import {
-  arbitrum,
-  base,
-  mainnet,
-  optimism,
-  polygon,
-  sepolia,
+  baseSepolia
 } from 'wagmi/chains';
+import ethena from './customChains/ethena';
 
 export const config = getDefaultConfig({
-  appName: 'RainbowKit App',
+  appName: 'Fortupool',
   projectId: 'YOUR_PROJECT_ID',
-  chains: [
-    mainnet,
-    polygon,
-    optimism,
-    arbitrum,
-    base,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [sepolia] : []),
-  ],
+  chains: [baseSepolia],
   ssr: true,
 });
