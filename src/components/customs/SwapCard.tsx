@@ -156,7 +156,7 @@ const SwapCard = () => {
         </CardContent>
         <CardFooter>
           <ShimmerButton className="shadow-2xl w-full" background="#6366f1">
-            <span className="whitespace-pre-wrap text-center text-md font-semibold font-medium leading-none tracking-tight text-white dark:from-white dark:to-blue-600/10 lg:text-md">
+            <span className="whitespace-pre-wrap text-center text-md font-semibold leading-none tracking-tight text-white dark:from-white dark:to-blue-600/10 lg:text-md">
               Buy
             </span>
           </ShimmerButton>
