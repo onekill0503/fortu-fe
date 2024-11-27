@@ -32,40 +32,13 @@ import ShinyButton from "../ui/shiny-button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 
 import TableWithdraw from "../table/withdraw/TableWithdraw";
+import Withdraw from "@/schema/types/Withdraw";
 
 const TableWithdrawCard = () => {
   const account = useAccount();
-  const [tickets, setTickets] = useState(0);
-  const [buyAmount, setBuyAmount] = useState(0);
-  const [ticketPrice, setTicketsPrice] = useState(2);
-  const [fromChain, setFromChain] = useState("base"); // base or uni
-  const [usdeBalance, setUsdeBalance] = useState(0);
 
-  let TP = BigInt(0);
-  let USDE_BALANCE = BigInt(0);
-
-  const SC_TP = useReadContract({
-    address: baseSepoliaContract.FORTU_POOL.address as `0x${string}`,
-    abi: baseSepoliaContract.FORTU_POOL.abi,
-    functionName: "TICKET_PRICE",
-    args: [],
-    chainId: baseSepolia.id,
-  });
-  const SC_USDE_BALANCE = useReadContract({
-    address: baseSepoliaContract.USDE.address as `0x${string}`,
-    abi: baseSepoliaContract.USDE.abi,
-    functionName: "balanceOf",
-    args: [account.address],
-    chainId: baseSepolia.id,
-  });
-
-  TP = (SC_TP.data as bigint) ?? BigInt(0);
-  USDE_BALANCE = (SC_USDE_BALANCE.data as bigint) ?? BigInt(0);
   useEffect(() => {
-    setTicketsPrice(Number(formatEther(TP.toString())));
-    setUsdeBalance(Number(formatEther(USDE_BALANCE.toString())));
-    console.log(`TP: ${TP}, USDE_BALANCE: ${USDE_BALANCE}`);
-  }, [buyAmount, TP, USDE_BALANCE]);
+  }, []);
 
 
   const [amount, setAmount] = useState('')

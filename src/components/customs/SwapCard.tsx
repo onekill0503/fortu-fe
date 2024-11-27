@@ -159,7 +159,6 @@ const SwapCard = () => {
     nativeFee: bigint;
   }) ?? { lzTokenFee: BigInt(0), nativeFee: BigInt(0) };
   composedMessage = (SC_COMPOSED_MESSAGE.data as string) ?? "";
-
   useEffect(() => {
     const userTicketCalc =
       USER_TICKET[1] > BigInt(0) ? Number(USER_TICKET[1] / TP) : 0;
@@ -173,7 +172,11 @@ const SwapCard = () => {
     );
     setUserTicket(userTicketCalc);
     setApproveAmount(USDE_ALLOWANCE[fromChain as keyof typeof USDE_ALLOWANCE]);
-  }, [buyAmount, TP, USDE_BALANCE, fromChain]);
+
+    if (account.chainId === unichain.id) setFromChain("uni");
+    if (account.chainId === baseSepolia.id) setFromChain("base");
+
+  }, [buyAmount, TP, USDE_BALANCE, fromChain, account.chainId]);
 
   const handleBuyTicket = async () => {
     const amountInWei = parseEther(buyAmount.toString());
@@ -349,8 +352,8 @@ const SwapCard = () => {
                 }}
               />
               <Select
-                defaultValue="base"
-                onValueChange={(e) => {
+                value={fromChain}
+                onValueChange={(e: string) => {
                   setFromChain(e);
                   handleSwitchChain(e);
                 }}

@@ -1,71 +1,51 @@
-import { columns } from "./columns";
-import { DataTable } from "./DataTable";
-import { useEffect, useState } from "react";
-import { request } from 'graphql-request';
-import { useQuery } from "@tanstack/react-query";
-import { useAccount } from "wagmi";
-import { gql } from "graphql-request";
-
-const queryWithdraw = gql`{
-    withdraws(orderBy: blockTimestamp, orderDirection: desc) {
-        id
-        blockTimestamp
-        blockNumber
-        amount
-        transactionHash
-        user
-    }
-}`
-
-interface Withdraw {
-    id: string
-    blockTimestamp: string
-    blockNumber: string
-    amount: string
-    transactionHash: string
-    user: string
-}
-
-type QueryData = {
-    withdraws: Withdraw[];
-};
+import { columns } from './columns'
+import { DataTable } from './DataTable'
+import { useEffect, useState } from 'react'
+import { useAccount } from 'wagmi'
+import { gql } from 'graphql-request'
+import Withdraw from '@/schema/types/Withdraw'
+import { getWithdrawDataByUser } from '@/utils/subgraph'
 
 export default function TableWithdraw() {
-    const [hasMounted, setHasMounted] = useState(false);
-    const { address } = useAccount();
+  const [hasMounted, setHasMounted] = useState(false)
+  const { address } = useAccount()
+  const [withdrawData, setWithdrawData] = useState<Withdraw[]>([])
+  const [isLoading, setIsLoading] = useState(false)
 
-    useEffect(() => {
-        setHasMounted(true);
-    }, []);
+  const updateWithdrawTable = async () => {
+    getWithdrawDataByUser(address as string, 0)
+      .then((data) => {
+        setWithdrawData(data)
+        setIsLoading(false)
+      })
+      .finally(() => {
+        setTimeout(() => updateWithdrawTable(), 5000)
+      })
+  }
 
-    const url = 'https://api.studio.thegraph.com/query/91582/jackramp-avs/version/latest';
+  useEffect(() => {
+    setHasMounted(true)
+    updateWithdrawTable()
+  }, [address])
 
-    const { data, isLoading, refetch } = useQuery<QueryData>({
-        queryKey: ['data'],
-        queryFn: async () => {
-            return await request(url, queryWithdraw);
-        },
-        refetchInterval: 10000,
-    });
+  if (!hasMounted) {
+    return null
+  }
 
-    const handleRefresh = () => {
-        refetch();
-    };
+  const handleRefresh = async () => {
+    getWithdrawDataByUser(address as string, 0).then((data) => {
+      setWithdrawData(data)
+    })
+  }
 
-    const filteredMints = data?.withdraws && address ? data?.withdraws.filter((mint: Withdraw) => mint.user.toLocaleLowerCase() === address.toLocaleLowerCase()) : [];
-
-    if (!hasMounted) {
-        return null;
-    }
-
-    return (
-        <div className="w-full h-auto z-10">
-            <DataTable
-                data={filteredMints || []}
-                columns={columns()}
-                handleRefresh={handleRefresh}
-                isLoading={isLoading}
-            />
-        </div>
-    );
+  return (
+    <div className="w-full h-auto z-10">
+      <DataTable
+        data={withdrawData}
+        columns={columns()}
+        handleRefresh={handleRefresh}
+        isLoading={isLoading}
+      />
+    </div>
+  )
 }

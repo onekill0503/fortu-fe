@@ -50,7 +50,6 @@ const BatchInfo = () => {
 
     setTotalPrize(Number(formatEther(TP)));
     setTotalStackedBatch(Number(formatEther(TSB)));
-    console.log(formatEther(TP), formatEther(TSB));
 
   }, [TP, TSB]);
 
