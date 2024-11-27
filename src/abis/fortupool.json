@@ -1,862 +1,906 @@
 [
     {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "_susde",
-                "type": "address"
-            },
-            {
-                "internalType": "address",
-                "name": "_usde",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "constructor"
+      "type": "constructor",
+      "inputs": [
+        {
+          "name": "_susde",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_usde",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "stateMutability": "nonpayable"
     },
     {
-        "inputs": [],
-        "name": "FORTU__ALLOWANCE_NOT_ENOUGH",
-        "type": "error"
+      "type": "receive",
+      "stateMutability": "payable"
     },
     {
-        "inputs": [],
-        "name": "FORTU__BATCH_IS_ONGOING",
-        "type": "error"
+      "type": "function",
+      "name": "BLOCK_TO_TICKET_RATIO",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
     },
     {
-        "inputs": [],
-        "name": "FORTU__INVALID_AMOUNT",
-        "type": "error"
+      "type": "function",
+      "name": "FORTU_RECEIVER",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "stateMutability": "view"
     },
     {
-        "inputs": [],
-        "name": "FORTU__NOT_ENOUGH_OPERATOR_CONFIRM",
-        "type": "error"
+      "type": "function",
+      "name": "PLATFORM_PERCENTAGE",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
     },
     {
-        "inputs": [],
-        "name": "FORTU__ON_PUASE_PERIOD",
-        "type": "error"
+      "type": "function",
+      "name": "TICKET_PRICE",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
     },
     {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "operator",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "timestamp",
-                "type": "uint256"
-            }
-        ],
-        "name": "FORTU__OPERATOR_ALREADY_SUBMIT",
-        "type": "error"
+      "type": "function",
+      "name": "TOTAL_FEES_COLLECTED",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
     },
     {
-        "inputs": [],
-        "name": "FORTU__PRIZE_ZERO",
-        "type": "error"
+      "type": "function",
+      "name": "TOTAL_STACKED",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
     },
     {
-        "inputs": [],
-        "name": "FORTU__UNIFFICIENT_BALANCE",
-        "type": "error"
+      "type": "function",
+      "name": "activeFunds",
+      "inputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
     },
     {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "wallet",
-                "type": "address"
-            }
-        ],
-        "name": "FORTU__WALLET_NOT_ALLOWED",
-        "type": "error"
+      "type": "function",
+      "name": "addOpertaor",
+      "inputs": [
+        {
+          "name": "_operator",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
     },
     {
-        "inputs": [],
-        "name": "FORTU__WINNER_NOT_PICKED",
-        "type": "error"
+      "type": "function",
+      "name": "batchPausePeriod",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool",
+          "internalType": "bool"
+        }
+      ],
+      "stateMutability": "view"
     },
     {
-        "inputs": [],
-        "name": "FORTU__ZERO_AMOUNT",
-        "type": "error"
+      "type": "function",
+      "name": "batchPools",
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "blockNumber",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "amount",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
     },
     {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "have",
-                "type": "address"
-            },
-            {
-                "internalType": "address",
-                "name": "want",
-                "type": "address"
-            }
-        ],
-        "name": "OnlyVRFWrapperCanFulfill",
-        "type": "error"
+      "type": "function",
+      "name": "batchTotalStacked",
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
     },
     {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "owner",
-                "type": "address"
-            }
-        ],
-        "name": "OwnableInvalidOwner",
-        "type": "error"
+      "type": "function",
+      "name": "buyFromLZ",
+      "inputs": [
+        {
+          "name": "_buyer",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "_amount",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
     },
     {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "account",
-                "type": "address"
-            }
-        ],
-        "name": "OwnableUnauthorizedAccount",
-        "type": "error"
+      "type": "function",
+      "name": "buyTicket",
+      "inputs": [
+        {
+          "name": "_amount",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
     },
     {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "batch",
-                "type": "uint256"
-            },
-            {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "luckyNumber",
-                "type": "uint256"
-            },
-            {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "block",
-                "type": "uint256"
-            },
-            {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "timestamp",
-                "type": "uint256"
-            }
-        ],
-        "name": "BatchLuckyNumber",
-        "type": "event"
+      "type": "function",
+      "name": "currentBatch",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
     },
     {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "requestId",
-                "type": "uint256"
-            },
-            {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "batch",
-                "type": "uint256"
-            },
-            {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "block",
-                "type": "uint256"
-            },
-            {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "timestamp",
-                "type": "uint256"
-            }
-        ],
-        "name": "GenerateRandom",
-        "type": "event"
+      "type": "function",
+      "name": "finalWinners",
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "batch",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "winner",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "luckyNumber",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
     },
     {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": false,
-                "internalType": "address",
-                "name": "wallet",
-                "type": "address"
-            },
-            {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "amount",
-                "type": "uint256"
-            },
-            {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "batch",
-                "type": "uint256"
-            },
-            {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "block",
-                "type": "uint256"
-            },
-            {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "timestamp",
-                "type": "uint256"
-            }
-        ],
-        "name": "JoinRaffle",
-        "type": "event"
+      "type": "function",
+      "name": "generateLuckyNumber",
+      "inputs": [],
+      "outputs": [],
+      "stateMutability": "nonpayable"
     },
     {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": true,
-                "internalType": "address",
-                "name": "previousOwner",
-                "type": "address"
-            },
-            {
-                "indexed": true,
-                "internalType": "address",
-                "name": "newOwner",
-                "type": "address"
-            }
-        ],
-        "name": "OwnershipTransferred",
-        "type": "event"
+      "type": "function",
+      "name": "getBalance",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
     },
     {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": false,
-                "internalType": "address",
-                "name": "wallet",
-                "type": "address"
-            },
-            {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "amount",
-                "type": "uint256"
-            },
-            {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "batch",
-                "type": "uint256"
-            },
-            {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "block",
-                "type": "uint256"
-            },
-            {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "timestamp",
-                "type": "uint256"
-            }
-        ],
-        "name": "Withdraw",
-        "type": "event"
+      "type": "function",
+      "name": "getLinkToken",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "contract LinkTokenInterface"
+        }
+      ],
+      "stateMutability": "view"
     },
     {
-        "inputs": [],
-        "name": "BLOCK_TO_TICKET_RATIO",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+      "type": "function",
+      "name": "getPrizePool",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
     },
     {
-        "inputs": [],
-        "name": "FORTU_RECEIVER",
-        "outputs": [
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+      "type": "function",
+      "name": "i_vrfV2PlusWrapper",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "contract IVRFV2PlusWrapper"
+        }
+      ],
+      "stateMutability": "view"
     },
     {
-        "inputs": [],
-        "name": "PLATFORM_PERCENTAGE",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+      "type": "function",
+      "name": "isValidOperator",
+      "inputs": [
+        {
+          "name": "_operator",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool",
+          "internalType": "bool"
+        }
+      ],
+      "stateMutability": "view"
     },
     {
-        "inputs": [],
-        "name": "TICKET_PRICE",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+      "type": "function",
+      "name": "linkAddress",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "stateMutability": "view"
     },
     {
-        "inputs": [],
-        "name": "TOTAL_FEES_COLLECTED",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+      "type": "function",
+      "name": "operatorAddress",
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "stateMutability": "view"
     },
     {
-        "inputs": [],
-        "name": "TOTAL_STACKED",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+      "type": "function",
+      "name": "operatorConfirm",
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool",
+          "internalType": "bool"
+        }
+      ],
+      "stateMutability": "view"
     },
     {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "_operator",
-                "type": "address"
-            }
-        ],
-        "name": "addOpertaor",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
+      "type": "function",
+      "name": "owner",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "stateMutability": "view"
     },
     {
-        "inputs": [],
-        "name": "batchPausePeriod",
-        "outputs": [
-            {
-                "internalType": "bool",
-                "name": "",
-                "type": "bool"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+      "type": "function",
+      "name": "randomNumbers",
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "requestId",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "randomNums",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "stateMutability": "view"
     },
     {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            },
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "name": "batchPools",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "blockNumber",
-                "type": "uint256"
-            },
-            {
-                "internalType": "uint256",
-                "name": "amount",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+      "type": "function",
+      "name": "rawFulfillRandomWords",
+      "inputs": [
+        {
+          "name": "_requestId",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "_randomWords",
+          "type": "uint256[]",
+          "internalType": "uint256[]"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
     },
     {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "name": "batchTotalStacked",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+      "type": "function",
+      "name": "rejoinBacth",
+      "inputs": [
+        {
+          "name": "_fromBatch",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
     },
     {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "_buyer",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "_amount",
-                "type": "uint256"
-            }
-        ],
-        "name": "buyFromLZ",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
+      "type": "function",
+      "name": "removeOperator",
+      "inputs": [
+        {
+          "name": "_operator",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
     },
     {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "_amount",
-                "type": "uint256"
-            }
-        ],
-        "name": "buyTicket",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
+      "type": "function",
+      "name": "renounceOwnership",
+      "inputs": [],
+      "outputs": [],
+      "stateMutability": "nonpayable"
     },
     {
-        "inputs": [],
-        "name": "currentBatch",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+      "type": "function",
+      "name": "setFortuReceiver",
+      "inputs": [
+        {
+          "name": "_receiver",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
     },
     {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "name": "finalWinners",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "batch",
-                "type": "uint256"
-            },
-            {
-                "internalType": "address",
-                "name": "winner",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "luckyNumber",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+      "type": "function",
+      "name": "submitWinner",
+      "inputs": [
+        {
+          "name": "luckyNumber",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "winner",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
     },
     {
-        "inputs": [],
-        "name": "generateLuckyNumber",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
+      "type": "function",
+      "name": "transferOwnership",
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
     },
     {
-        "inputs": [],
-        "name": "getBalance",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+      "type": "function",
+      "name": "updateBlockToTicketRatio",
+      "inputs": [
+        {
+          "name": "_ratio",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
     },
     {
-        "inputs": [],
-        "name": "getLinkToken",
-        "outputs": [
-            {
-                "internalType": "contract LinkTokenInterface",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+      "type": "function",
+      "name": "updatePlatformPercentage",
+      "inputs": [
+        {
+          "name": "_percentage",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
     },
     {
-        "inputs": [],
-        "name": "i_vrfV2PlusWrapper",
-        "outputs": [
-            {
-                "internalType": "contract IVRFV2PlusWrapper",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+      "type": "function",
+      "name": "updateTicketPrice",
+      "inputs": [
+        {
+          "name": "_price",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
     },
     {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "_operator",
-                "type": "address"
-            }
-        ],
-        "name": "isValidOperator",
-        "outputs": [
-            {
-                "internalType": "bool",
-                "name": "",
-                "type": "bool"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+      "type": "function",
+      "name": "withdraw",
+      "inputs": [
+        {
+          "name": "_amount",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "_fromBatch",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
     },
     {
-        "inputs": [],
-        "name": "linkAddress",
-        "outputs": [
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+      "type": "function",
+      "name": "withdrawFees",
+      "inputs": [],
+      "outputs": [],
+      "stateMutability": "nonpayable"
     },
     {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "name": "operatorAddress",
-        "outputs": [
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+      "type": "function",
+      "name": "withdrawLink",
+      "inputs": [],
+      "outputs": [],
+      "stateMutability": "nonpayable"
     },
     {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            },
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "name": "operatorConfirm",
-        "outputs": [
-            {
-                "internalType": "bool",
-                "name": "",
-                "type": "bool"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+      "type": "function",
+      "name": "withdrawNative",
+      "inputs": [
+        {
+          "name": "amount",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
     },
     {
-        "inputs": [],
-        "name": "owner",
-        "outputs": [
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+      "type": "function",
+      "name": "wrapperAddress",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address",
+          "internalType": "address"
+        }
+      ],
+      "stateMutability": "view"
     },
     {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "name": "randomNumbers",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "requestId",
-                "type": "uint256"
-            },
-            {
-                "internalType": "uint256",
-                "name": "randomNums",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+      "type": "event",
+      "name": "BatchLuckyNumber",
+      "inputs": [
+        {
+          "name": "batch",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        },
+        {
+          "name": "luckyNumber",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        },
+        {
+          "name": "block",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        },
+        {
+          "name": "timestamp",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        }
+      ],
+      "anonymous": false
     },
     {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "_requestId",
-                "type": "uint256"
-            },
-            {
-                "internalType": "uint256[]",
-                "name": "_randomWords",
-                "type": "uint256[]"
-            }
-        ],
-        "name": "rawFulfillRandomWords",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
+      "type": "event",
+      "name": "GenerateRandom",
+      "inputs": [
+        {
+          "name": "requestId",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        },
+        {
+          "name": "batch",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        },
+        {
+          "name": "block",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        },
+        {
+          "name": "timestamp",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        }
+      ],
+      "anonymous": false
     },
     {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "_fromBatch",
-                "type": "uint256"
-            }
-        ],
-        "name": "rejoinBacth",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
+      "type": "event",
+      "name": "JoinRaffle",
+      "inputs": [
+        {
+          "name": "wallet",
+          "type": "address",
+          "indexed": false,
+          "internalType": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        },
+        {
+          "name": "batch",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        },
+        {
+          "name": "block",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        },
+        {
+          "name": "timestamp",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        }
+      ],
+      "anonymous": false
     },
     {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "_operator",
-                "type": "address"
-            }
-        ],
-        "name": "removeOperator",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
+      "type": "event",
+      "name": "OwnershipTransferred",
+      "inputs": [
+        {
+          "name": "previousOwner",
+          "type": "address",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "name": "newOwner",
+          "type": "address",
+          "indexed": true,
+          "internalType": "address"
+        }
+      ],
+      "anonymous": false
     },
     {
-        "inputs": [],
-        "name": "renounceOwnership",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
+      "type": "event",
+      "name": "Withdraw",
+      "inputs": [
+        {
+          "name": "wallet",
+          "type": "address",
+          "indexed": false,
+          "internalType": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        },
+        {
+          "name": "batch",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        },
+        {
+          "name": "block",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        },
+        {
+          "name": "timestamp",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        }
+      ],
+      "anonymous": false
     },
     {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "_receiver",
-                "type": "address"
-            }
-        ],
-        "name": "setFortuReceiver",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
+      "type": "error",
+      "name": "FORTU__ALLOWANCE_NOT_ENOUGH",
+      "inputs": []
     },
     {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "luckyNumber",
-                "type": "uint256"
-            },
-            {
-                "internalType": "address",
-                "name": "winner",
-                "type": "address"
-            }
-        ],
-        "name": "submitWinner",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
+      "type": "error",
+      "name": "FORTU__BATCH_IS_ONGOING",
+      "inputs": []
     },
     {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "newOwner",
-                "type": "address"
-            }
-        ],
-        "name": "transferOwnership",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
+      "type": "error",
+      "name": "FORTU__FUNDS_NOT_MIGRATED",
+      "inputs": [
+        {
+          "name": "batch",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
     },
     {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "_ratio",
-                "type": "uint256"
-            }
-        ],
-        "name": "updateBlockToTicketRatio",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
+      "type": "error",
+      "name": "FORTU__INVALID_AMOUNT",
+      "inputs": []
     },
     {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "_percentage",
-                "type": "uint256"
-            }
-        ],
-        "name": "updatePlatformPercentage",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
+      "type": "error",
+      "name": "FORTU__NOT_ENOUGH_OPERATOR_CONFIRM",
+      "inputs": []
     },
     {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "_price",
-                "type": "uint256"
-            }
-        ],
-        "name": "updateTicketPrice",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
+      "type": "error",
+      "name": "FORTU__ON_PUASE_PERIOD",
+      "inputs": []
     },
     {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "_amount",
-                "type": "uint256"
-            },
-            {
-                "internalType": "uint256",
-                "name": "_fromBatch",
-                "type": "uint256"
-            }
-        ],
-        "name": "withdraw",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
+      "type": "error",
+      "name": "FORTU__OPERATOR_ALREADY_SUBMIT",
+      "inputs": [
+        {
+          "name": "operator",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "timestamp",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
     },
     {
-        "inputs": [],
-        "name": "withdrawFees",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
+      "type": "error",
+      "name": "FORTU__PRIZE_ZERO",
+      "inputs": []
     },
     {
-        "inputs": [],
-        "name": "withdrawLink",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
+      "type": "error",
+      "name": "FORTU__UNIFFICIENT_BALANCE",
+      "inputs": []
     },
     {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "amount",
-                "type": "uint256"
-            }
-        ],
-        "name": "withdrawNative",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
+      "type": "error",
+      "name": "FORTU__WALLET_NOT_ALLOWED",
+      "inputs": [
+        {
+          "name": "wallet",
+          "type": "address",
+          "internalType": "address"
+        }
+      ]
     },
     {
-        "inputs": [],
-        "name": "wrapperAddress",
-        "outputs": [
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
+      "type": "error",
+      "name": "FORTU__WINNER_NOT_PICKED",
+      "inputs": []
     },
     {
-        "stateMutability": "payable",
-        "type": "receive"
+      "type": "error",
+      "name": "FORTU__ZERO_AMOUNT",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "OnlyVRFWrapperCanFulfill",
+      "inputs": [
+        {
+          "name": "have",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "want",
+          "type": "address",
+          "internalType": "address"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "OwnableInvalidOwner",
+      "inputs": [
+        {
+          "name": "owner",
+          "type": "address",
+          "internalType": "address"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "OwnableUnauthorizedAccount",
+      "inputs": [
+        {
+          "name": "account",
+          "type": "address",
+          "internalType": "address"
+        }
+      ]
     }
-]
+  ]
+  

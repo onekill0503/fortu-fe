@@ -7,6 +7,7 @@ import { WagmiProvider } from 'wagmi';
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 
 import { config } from '../wagmi';
+import { Toaster } from '@/components/ui/toaster';
 
 const client = new QueryClient();
 
@@ -15,6 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <WagmiProvider config={config}>
       <QueryClientProvider client={client}>
         <RainbowKitProvider showRecentTransactions={true}>
+          <Toaster />
           <Component {...pageProps} />
         </RainbowKitProvider>
       </QueryClientProvider>
