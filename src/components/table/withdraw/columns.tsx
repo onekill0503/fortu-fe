@@ -3,6 +3,7 @@ import { DataTableColumnHeader } from './ColumnHeader'
 import { Copy } from 'lucide-react'
 import { toast } from 'sonner'
 import { formatEther } from 'viem'
+import Withdraw from '@/schema/types/Withdraw'
 
 function convertTimestampToDate(timestamp: number): string {
   const date = new Date(timestamp * 1000)
@@ -25,15 +26,6 @@ function formatAddress(inputString: string): string {
   const firstPart = inputString.slice(0, 4)
   const lastPart = inputString.slice(-4)
   return `${firstPart}…${lastPart}`
-}
-
-interface Withdraw {
-  id: string
-  blockTimestamp: string
-  blockNumber: string
-  amount: string
-  transactionHash: string
-  user: string
 }
 
 export type TransactionHistoryRow = Withdraw
@@ -95,7 +87,7 @@ export function columns(): ColumnDef<TransactionHistoryRow>[] {
       accessorKey: 'amount',
       header: ({ column }) => <DataTableColumnHeader column={column} title="Amount" />,
       cell: ({ row }) => {
-        const amount = formatEther(row.original.amount) || '-'
+        const amount = formatEther(BigInt(row.original.amount)) || '-'
         return (
           <div className='flex items-center'>
             <span className='text-md'>{amount}</span>

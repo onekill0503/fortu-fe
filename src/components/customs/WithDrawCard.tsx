@@ -87,7 +87,7 @@ const WithdrawCard = () => {
   });
 
   TP = (SC_TP.data as bigint) ?? BigInt(0);
-  USDE_BALANCE = !SC_USDE_BALANCE.data ? BigInt(0) : SC_USDE_BALANCE.data[1] as bigint;
+  USDE_BALANCE = !SC_USDE_BALANCE.data ? BigInt(0) : (SC_USDE_BALANCE.data as [bigint, bigint])[1];
   WITHDRAW_OUTPUT = SC_PREVIEW_WITHDRAW.data as bigint ?? BigInt(0);
 
   useEffect(() => {
