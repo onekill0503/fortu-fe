@@ -9,6 +9,8 @@ const GET_DISTRIBUTED_PRIZES = gql`
       transactionHash_
       winner
       amount
+      luckyNumber
+      totalTickets
     }
   }
 `
