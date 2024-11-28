@@ -60,7 +60,7 @@ const BatchInfo = () => {
           <CardHeader>
             <CardTitle>
               <span className="block font-bold text-2xl">
-                Total Asset Deposit in Batch #1
+                Total Asset Deposit in Batch #{(SC_CB.data as bigint).toString() ?? 0}
               </span>
             </CardTitle>
           </CardHeader>
@@ -88,7 +88,7 @@ const BatchInfo = () => {
           <CardHeader>
             <CardTitle>
               <span className="block font-bold text-2xl">
-                Total Prize in Batch #1
+                Total Prize in Batch #{(SC_CB.data as bigint).toString() ?? 0}
               </span>
             </CardTitle>
           </CardHeader>
