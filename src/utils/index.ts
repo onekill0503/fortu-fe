@@ -65,7 +65,6 @@ export const getBuyData = (
 
 export const getLZArgs = (amount: string, address: string, chain: string, compose: string) => {
   if (address === undefined) return [];
-  console.log(solidityPackedKeccak256(["address", "uint256"], [address, amount]))
   switch (chain) {
     case "uni":
       return [

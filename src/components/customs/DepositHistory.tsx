@@ -20,10 +20,18 @@ import { baseSepolia } from "viem/chains";
 const DepositHistory = () => {
   const [depositData, setDepositData] = useState<Deposit[]>([]);
 
+  const updateDepositHistory = () => {
+    getDepositData(0)
+      .then((data) => {
+        setDepositData(data);
+      })
+      .finally(() => {
+        setTimeout(() => updateDepositHistory(), 5000);
+      });
+  }
+
   useEffect(() => {
-    getDepositData(0).then((data) => {
-      setDepositData(data);
-    });
+    updateDepositHistory();
   }, [""]);
   return (
     <div>

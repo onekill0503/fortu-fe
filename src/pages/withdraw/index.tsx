@@ -1,29 +1,12 @@
-import HomeStyle from "../styles/Home.module.css"; 
-import { ConnectButton  } from '@rainbow-me/rainbowkit';
+import HomeStyle from "../styles/Home.module.css";
 import type { NextPage } from 'next';
-import Head from 'next/head';
-import { useAccount, useReadContract, useWriteContract } from 'wagmi';
-import { useEffect, useState } from 'react';
-// import baseSepoliaContract from '../constants/baseSepoliaContract';
-import { baseSepolia } from 'viem/chains';
-import { Command } from '@mynaui/icons-react';
-import Link from 'next/link';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from "@/components/ui/input"
-import { BorderBeam } from '@/components/ui/border-beam';
-import Meteors from '@/components/ui/meteors';
+import { useAccount, useWriteContract } from 'wagmi';
+import { useEffect } from 'react';
 import Ripple from '@/components/ui/ripple';
-import ShimmerButton from '@/components/ui/shimmer-button';
-import { Button } from '@/components/ui/button';
-import NumberTicker from '@/components/ui/number-ticker';
-import { Badge } from '@/components/ui/badge';
-import { Monoton, Open_Sans } from 'next/font/google'
-import SwapCard from "@/components/customs/SwapCard";
 import WithdrawCard from "@/components/customs/WithDrawCard";
-import BatchInfo from "@/components/customs/BatchInfo";
 import Header from "@/components/header/header";
 import TableWithdrawCard from "@/components/customs/TableWithdrawCard";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { Open_Sans } from "next/font/google";
 
 const OSFont = Open_Sans({ weight: ['400','500','700','800','300'], style: 'normal', subsets: ['latin'] });
 

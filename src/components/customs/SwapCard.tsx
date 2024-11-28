@@ -26,8 +26,7 @@ import { useAccount, useReadContract } from "wagmi";
 import { toCurrency } from "@/utils/currencies";
 import { formatEther, parseEther } from "ethers";
 import { useToast } from "../../hooks/use-toast";
-import { ToastAction } from "../ui/toast";
-import { ArrowRight, ArrowUpRight, Ticket } from "@mynaui/icons-react";
+import { ArrowUpRight, Ticket } from "@mynaui/icons-react";
 import Link from "next/link";
 import { Badge } from "../ui/badge";
 import { useWriteContract, useSwitchChain } from "wagmi";
@@ -73,7 +72,7 @@ const SwapCard = () => {
     functionName: "activeFunds",
     args: [account.address],
     chainId: baseSepolia.id,
-  })  
+  });
 
   const SC_TP = useReadContract({
     address: baseSepoliaContract.FORTU_POOL.address as `0x${string}`,
@@ -174,9 +173,10 @@ const SwapCard = () => {
   }) ?? { lzTokenFee: BigInt(0), nativeFee: BigInt(0) };
   composedMessage = (SC_COMPOSED_MESSAGE.data as string) ?? "";
   useEffect(() => {
-
-    const rejoinBatchCondition = 
-        activeFunds[0] != currentBatch && activeFunds[1] > BigInt(0) ? true : false; 
+    const rejoinBatchCondition =
+      activeFunds[0] != currentBatch && activeFunds[1] > BigInt(0)
+        ? true
+        : false;
     setRejoinBatch(rejoinBatchCondition);
 
     const userTicketCalc =
@@ -189,32 +189,44 @@ const SwapCard = () => {
         )
       )
     );
-    setUserTicket(userTicketCalc);
     setApproveAmount(USDE_ALLOWANCE[fromChain as keyof typeof USDE_ALLOWANCE]);
 
     if (account.chainId === unichain.id) setFromChain("uni");
     if (account.chainId === baseSepolia.id) setFromChain("base");
 
-  }, [buyAmount, TP, USDE_BALANCE, fromChain, account.chainId]);
+    if (rejoinBatch && activeFunds[1]) setTickets(Number(activeFunds[1] / TP));
+    else setUserTicket(userTicketCalc);
+  }, [buyAmount, TP, USDE_BALANCE, fromChain, account.chainId, rejoinBatch]);
 
   const handleRejoin = async () => {
     writeContractAsync({
       address: baseSepoliaContract.FORTU_POOL.address as `0x${string}`,
       abi: baseSepoliaContract.FORTU_POOL.abi,
-      functionName: "rejoinBacth (0x29c5ce08)",
+      functionName: "rejoinBacth",
       args: [activeFunds[0]],
-    }).then(() => {
-      toast({
-        title: "Success Migration",
-        description: "Your funds has been successfully migrated",
-      })
-    }).catch((err) => {
-      toast({
-        title: "Failed Migration",
-        description: "Your funds failed to migrated",
-      })
     })
-  }
+      .then((tx) => {
+        setTickets(0);
+        toast({
+          title: "Success Migration",
+          description: (
+            <Link
+              href={`${baseSepolia.blockExplorers.default.url}/tx/${tx}`}
+              target="_blank"
+            >
+              {String(tx).substring(0, 15)} ...{" "}
+              <ArrowUpRight className="inline-block" size={15} />
+            </Link>
+          ),
+        });
+      })
+      .catch((err) => {
+        toast({
+          title: "Failed Migration",
+          description: "Your funds failed to migrated",
+        });
+      });
+  };
 
   const handleBuyTicket = async () => {
     const amountInWei = parseEther(buyAmount.toString());
@@ -238,10 +250,11 @@ const SwapCard = () => {
               title: `Transaction Created`,
               description: (
                 <Link
-                  href={`${unichain.blockExplorers.default.url}/tx/${tx}`}
+                  href={`${baseSepolia.blockExplorers.default.url}/tx/${tx}`}
                   target="_blank"
                 >
-                  {String(tx).substring(0, 15)} ... <ArrowUpRight className="inline-block" size={15} />
+                  {String(tx).substring(0, 15)} ...{" "}
+                  <ArrowUpRight className="inline-block" size={15} />
                 </Link>
               ),
             });
@@ -281,7 +294,8 @@ const SwapCard = () => {
                   href={`${unichain.blockExplorers.default.url}/tx/${tx}`}
                   target="_blank"
                 >
-                  {String(tx).substring(0, 15)} ... <ArrowUpRight className="inline-block" size={15} />
+                  {String(tx).substring(0, 15)} ...{" "}
+                  <ArrowUpRight className="inline-block" size={15} />
                 </Link>
               ),
             });
@@ -314,7 +328,8 @@ const SwapCard = () => {
               href={`${unichain.blockExplorers.default.url}/tx/${tx}`}
               target="_blank"
             >
-              {String(tx).substring(0, 15)} ... <ArrowUpRight className="inline-block" size={15} />
+              {String(tx).substring(0, 15)} ...{" "}
+              <ArrowUpRight className="inline-block" size={15} />
             </Link>
           ),
         });
@@ -342,10 +357,10 @@ const SwapCard = () => {
         break;
     }
   };
-  
+
   return (
     <div className="swap__element flex-[0.3] relative">
-      { !rejoinBatch && (
+      {!rejoinBatch && (
         <Card className="w-full">
           <CardHeader>
             <CardTitle>
@@ -467,7 +482,7 @@ const SwapCard = () => {
           </CardFooter>
         </Card>
       )}
-      { rejoinBatch && (
+      {rejoinBatch && (
         <Card className="w-full">
           <CardHeader>
             <CardTitle>
@@ -500,15 +515,15 @@ const SwapCard = () => {
             </div>
           </CardContent>
           <CardFooter>
-              <ShimmerButton
-                className="shadow-2xl w-full"
-                background="#6366f1"
-                onClick={handleRejoin}
-              >
-                <span className="whitespace-pre-wrap text-center text-md font-medium leading-none tracking-tight text-white dark:from-white dark:to-blue-600/10 lg:text-md">
-                  Migrate
-                </span>
-              </ShimmerButton>
+            <ShimmerButton
+              className="shadow-2xl w-full"
+              background="#6366f1"
+              onClick={handleRejoin}
+            >
+              <span className="whitespace-pre-wrap text-center text-md font-medium leading-none tracking-tight text-white dark:from-white dark:to-blue-600/10 lg:text-md">
+                Migrate
+              </span>
+            </ShimmerButton>
           </CardFooter>
         </Card>
       )}
