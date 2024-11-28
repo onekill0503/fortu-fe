@@ -313,33 +313,68 @@ const SwapCard = () => {
   const handleApprove = async () => {
     const amountInWei = parseEther(buyAmount.toString());
     const contract = getApprovalData(fromChain);
-    writeContractAsync({
-      address: contract.contract as `0x${string}`,
-      abi: contract.abi,
-      functionName: "approve",
-      args: [contract.spender as `0x${string}`, amountInWei],
-    })
-      .then((tx) => {
-        setApproveAmount(amountInWei);
-        toast({
-          title: `Transaction Created`,
-          description: (
-            <Link
-              href={`${unichain.blockExplorers.default.url}/tx/${tx}`}
-              target="_blank"
-            >
-              {String(tx).substring(0, 15)} ...{" "}
-              <ArrowUpRight className="inline-block" size={15} />
-            </Link>
-          ),
-        });
-      })
-      .catch((err) => {
-        toast({
-          title: `Transaction Cancelled`,
-          description: "Your transaction was cancelled",
-        });
-      });
+    switch (fromChain) {
+      case "base":
+        writeContractAsync({
+          address: contract.contract as `0x${string}`,
+          abi: contract.abi,
+          functionName: "approve",
+          args: [contract.spender as `0x${string}`, amountInWei],
+        })
+          .then((tx) => {
+            setApproveAmount(amountInWei);
+            toast({
+              title: `Transaction Created`,
+              description: (
+                <Link
+                  href={`${baseSepolia.blockExplorers.default.url}/tx/${tx}`}
+                  target="_blank"
+                >
+                  {String(tx).substring(0, 15)} ...{" "}
+                  <ArrowUpRight className="inline-block" size={15} />
+                </Link>
+              ),
+            });
+          })
+          .catch((err) => {
+            toast({
+              title: `Transaction Cancelled`,
+              description: "Your transaction was cancelled",
+            });
+          });
+        break;
+      case "uni":
+        writeContractAsync({
+          address: contract.contract as `0x${string}`,
+          abi: contract.abi,
+          functionName: "approve",
+          args: [contract.spender as `0x${string}`, amountInWei],
+        })
+          .then((tx) => {
+            setApproveAmount(amountInWei);
+            toast({
+              title: `Transaction Created`,
+              description: (
+                <Link
+                  href={`${unichain.blockExplorers.default.url}/tx/${tx}`}
+                  target="_blank"
+                >
+                  {String(tx).substring(0, 15)} ...{" "}
+                  <ArrowUpRight className="inline-block" size={15} />
+                </Link>
+              ),
+            });
+          })
+          .catch((err) => {
+            toast({
+              title: `Transaction Cancelled`,
+              description: "Your transaction was cancelled",
+            });
+          });
+        break;
+      default:
+        break;
+    }
   };
 
   const handleMaxButton = () => {
