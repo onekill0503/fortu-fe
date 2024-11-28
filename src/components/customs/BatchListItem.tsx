@@ -101,7 +101,7 @@ const BatchListItem = (item: BatchPrize) => {
                   {Number(formatEther(item.amount)).toFixed(6)}
                 </span>
                 <img
-                  src="https://app.ethena.fi/shared/usde.svg"
+                  src="https://app.ethena.fi/shared/sUSDe.svg"
                   style={{ width: "20px", height: "20px" }}
                   alt="usde"
                   className="inline-block ml-2"
