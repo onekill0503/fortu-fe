@@ -227,7 +227,10 @@ const SwapCard = () => {
         });
       });
   };
-
+  const resetAfterBuy = () => {
+    setBuyAmount(0);
+    setTickets(0);
+  }
   const handleBuyTicket = async () => {
     const amountInWei = parseEther(buyAmount.toString());
     if (amountInWei <= BigInt(0)) {
@@ -246,6 +249,7 @@ const SwapCard = () => {
           args: [amountInWei],
         })
           .then((tx) => {
+            resetAfterBuy();
             toast({
               title: `Transaction Created`,
               description: (
@@ -287,6 +291,7 @@ const SwapCard = () => {
           value: bridgeFeeAmount.nativeFee + BigInt(1e10),
         })
           .then((tx) => {
+            resetAfterBuy();
             toast({
               title: `Transaction Created`,
               description: (

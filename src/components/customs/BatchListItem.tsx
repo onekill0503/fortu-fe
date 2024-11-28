@@ -75,7 +75,7 @@ const BatchListItem = (item: BatchPrize) => {
             <div className="flex justify-between items-center mx-5">
               <span className="font-semibold">Total Tickets</span>
               <span className="flex items-center">
-                <span className="inline-block">{item.totalTickets ?? "-"}</span>
+                <span className="inline-block">{item.totalTickets ? formatEther(item.totalTickets) : "-"}</span>
                 <Ticket className="inline-block ml-2" size={20} />{" "}
               </span>
             </div>

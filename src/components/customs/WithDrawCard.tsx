@@ -103,6 +103,7 @@ const WithdrawCard = () => {
       args: [parseEther(String(amount)) , SC_CB.data],
       chainId: baseSepolia.id,
     }).then((tx: string) => {
+      setAmount(0);
       toast({
         title: `Withdrawal Successful`,
         description: (
