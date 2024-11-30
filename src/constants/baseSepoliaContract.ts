@@ -4,7 +4,7 @@ import FORTU_RECEIVER from '../abis/fortureceiver.json'
 import SUSDE_ABI from '../abis/susde.json'
 const abis = {
     FORTU_POOL: {
-        address: `0x2406c53B36dB2f5fdCf20474eBEc639f7C8b884e`,
+        address: `0xC09D4029716DB08ccC2A31505DBf99B66a65b890`,
         abi: FORTU_ABI
     },
     USDE: {
@@ -16,7 +16,7 @@ const abis = {
         abi: SUSDE_ABI
     },
     FORTU_RECEIVER: {
-        address: `0x4a7e391f1c436d27f01C308120A3DE8aBA839F2d`,
+        address: `0x09BF8faf8AA2c048541F225F9B307Ea1B073f097`,
         abi: FORTU_RECEIVER
     }
 };
